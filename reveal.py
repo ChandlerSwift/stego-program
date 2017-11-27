@@ -7,5 +7,5 @@ data = INPUT.read()
 decoded = ""
 for byte in data:
     decoded += str(byte & 1)
-decoded = decoded.rstrip("0")[:-1]  # remove zero padding
+decoded = decoded.rstrip("0")[54:-1]  # skip header; remove zero padding and trailing 1
 print(decoded)
