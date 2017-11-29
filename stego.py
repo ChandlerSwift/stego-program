@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
+# usage: stego.py input.bmp output.bmp [binary data to encode]
 import sys
 
 INPUT = open(sys.argv[1], "rb")
 OUTPUT = open(sys.argv[2], "wb")
+message = sys.argv[3]  # a binary message
 
-data = INPUT.read(54)  # don't modify the header
+data = INPUT.read(54)  # skip/don't modify the header
+image = INPUT.read()
 
-data += bytes(map(lambda byte: (byte & ~1) | 0, INPUT.read()))
+padded_msg = message + "1" + "0" * (len(image) - len(message) - 1)
 
-OUTPUT.write(data)
+stego_msg = map(lambda byte, bit: (byte & ~1) | int(bit), image, padded_msg)
+
+OUTPUT.write(data + bytes(stego_msg))
