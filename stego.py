@@ -6,11 +6,11 @@ INPUT = open(sys.argv[1], "rb")
 OUTPUT = open(sys.argv[2], "wb")
 message = sys.argv[3]  # a binary message
 
-data = INPUT.read(54)  # skip/don't modify the header
+img_header = INPUT.read(54)  # skip/don't modify the header
 image = INPUT.read()
 
 padded_msg = message + "1" + "0" * (len(image) - len(message) - 1)
 
 stego_msg = map(lambda byte, bit: (byte & ~1) | int(bit), image, padded_msg)
 
-OUTPUT.write(data + bytes(stego_msg))
+OUTPUT.write(img_header + bytes(stego_msg))
