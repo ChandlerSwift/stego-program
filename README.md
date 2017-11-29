@@ -15,15 +15,19 @@ Decoding: `python3 reveal.py <input.bmp>`
 
 ### Examples
 The original image (from /r/EarthPorn: https://redd.it/7d2u0m):
+
 [![trees.bmp](/examples/trees-thumb.jpg?raw=true)](/examples/trees.bmp)
 
 The image encoded with binary 42 (`101010`):
+
 [![trees.bmp](/examples/trees-thumb.jpg?raw=true)](/examples/trees-message.bmp)
 
 The image with all least-significant-bits turned to ones:
+
 [![trees.bmp](/examples/trees-thumb.jpg?raw=true)](/examples/trees-ones.bmp)
 
 The image with all least-significant-bits turned to zeros:
+
 [![trees.bmp](/examples/trees-thumb.jpg?raw=true)](/examples/trees-zeros.bmp)
 
 Note that all the images are indistinguishable. The last two should be the
